@@ -14,11 +14,22 @@ namespace RestCostumerService
     {
 
         [OperationContract] // Medlem af serviceContracten
-        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/")]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/")] // Gør man kan kalde metode i browseren via URL. 
         IList<Customer> GetCustomers();
 
+
         [OperationContract]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "data/")]
         string GetData();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/{id}")]
+        Customer GetCustomer(string id);
+
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/{id}/delete")]
+        string DeleteCustomer(string id);
+
 
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -17,13 +17,46 @@ namespace RestCostumerService
             return "Hej";
         }
 
-        private static List<Customer> clist = new List<Customer>();
+        private static List<Customer> clist = new List<Customer>()
+        {
+            new Customer (1,"Ian","Frost", 1995),
+            new Customer (2, "Nikolaj", "Dyring", 1994)
+        };
+        
 
         public IList<Customer>GetCustomers()
         {
             return clist;
         }
+
+        public Customer GetCustomer(string id)
+        {
+            
+            foreach (var customer in clist)
+            {
+                if(customer.ID == Int32.Parse(id))
+                {
+                    return customer;
+                }
+            }
+            return null;
+        }
         
+        public void DeleteCustomer(string id)
+        {
+            foreach (var customer in clist)
+            {
+                if(customer.ID == Int32.Parse(id))
+                {
+                    clist.Remove(customer);
+
+                   
+                }
+                
+            }
+            
+            
+        }
         
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
