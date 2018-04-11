@@ -28,9 +28,12 @@ namespace RestCostumerService
 
         [OperationContract]
         [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/{id}/delete")]
-        string DeleteCustomer(string id);
+        void DeleteCustomer(string id);
 
 
+        [OperationContract]
+        [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "customers/add")]
+        void InsertCustomer(Customer customer);
         //[OperationContract]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
 

@@ -12,12 +12,14 @@ namespace RestCostumerService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
+
+        public static int nextId = 0;
         public string GetData()
         {
             return "Hej";
         }
 
-        private static List<Customer> clist = new List<Customer>()
+        private static List<Customer> clist = new List<Customer>() // static betyder at man skaber kun én liste som clients kan tilgå. Objekterne anvender den samme liste 
         {
             new Customer (1,"Ian","Frost", 1995),
             new Customer (2, "Nikolaj", "Dyring", 1994)
@@ -55,6 +57,24 @@ namespace RestCostumerService
                 
             }
             
+            
+        }
+        public void InsertCustomer(Customer customer)
+        {
+            customer.ID = Service1.nextId++;
+            clist.Add(customer);
+            
+        }
+
+        public Customer UpdateCustomer(Customer UpdateCustomer, string id)
+        {
+            foreach (var Customer in clist)
+            {
+                if(Customer.ID == Int32.Parse(id))
+                {
+                    
+                }
+            }
             
         }
         
